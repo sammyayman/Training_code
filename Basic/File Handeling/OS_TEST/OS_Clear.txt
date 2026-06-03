@@ -1,0 +1,44 @@
+
+import os
+import subprocess
+
+# Method 1: Using os.system() - most common
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# Method 2: Using subprocess - more secure
+def clear_screen_subprocess():
+    subprocess.run('cls' if os.name == 'nt' else 'clear', shell=True)
+
+# Method 3: Cross-platform function
+def clear():
+    """Clear screen for Windows, Mac, and Linux"""
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    else:  # Mac and Linux
+        os.system('clear')
+
+# Method 4: Using ANSI escape sequences
+def clear_ansi():
+    """Clear screen using ANSI escape codes"""
+    print('\033[2J\033[H', end='')
+
+# Method 5: Simple newlines (not true clearing)
+def clear_newlines():
+    """Simulate clearing with newlines"""
+    print('\n' * 100)
+
+# Example usage
+print("Before clearing...")
+print("Some content here...")
+
+# Uncomment any of these to test:
+clear_screen()
+# clear_screen_subprocess()
+# clear()
+# clear_ansi()
+# clear_newlines()
+
+print("Screen cleared! (if you uncommented a method above)")
+
+ 
